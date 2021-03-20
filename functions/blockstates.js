@@ -247,14 +247,201 @@ document.getElementById("blockstateForm").onsubmit = form => {
 
             fs.writeFile(`${filepath}\\assets\\${modName}\\blockstates\\${finalBlock}_pillar.json`, jsonContent, 'utf8', (err) => {
                 if (err) throw err;
-                console.log('Made wall blockstate file');
+                console.log('Made pillar blockstate file');
             });
         }
 
+        // Gate - Wood Creator
+        if (document.getElementById("gate_wood").checked === true) {
+            brickSlice();
+            
+            const jsonProduct = {
+                variants: {
+                  "facing=east,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_fence_gate`
+                 },
+                 "facing=east,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_fence_gate_open`
+                 },
+                 "facing=east,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall`
+                 },
+                 "facing=east,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall_open`
+                 },
+                 "facing=north,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_fence_gate`
+                 },
+                 "facing=north,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_fence_gate_open`
+                 },
+                 "facing=north,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall`
+                 },
+                 "facing=north,in_wall=true,open=true": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall_open`
+                 },
+                 "facing=south,in_wall=false,open=false": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_fence_gate`
+                 },
+                 "facing=south,in_wall=false,open=true": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_fence_gate_open`
+                 },
+                 "facing=south,in_wall=true,open=false": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall`
+                 },
+                 "facing=south,in_wall=true,open=true": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall_open`
+                 },
+                 "facing=west,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_fence_gate`
+                 },
+                 "facing=west,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_fence_gate_open`
+                 },
+                 "facing=west,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall`
+                 },
+                 "facing=west,in_wall=true,open=true": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_fence_gate_wall_open`
+                 }
+               }
+            };
+            
+            const jsonContent = JSON.stringify(jsonProduct, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\blockstates\\${finalBlock}fence_gate.json`, jsonContent, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Gate - Wood blockstate file');
+            });
+        }
+        
+        if (document.getElementById("gate_stone").checked === true) {
+            brickSlice();
+            
+            const jsonProduct = {
+                variants: {
+                  "facing=east,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=east,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=east,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=east,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 270,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=north,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=north,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=north,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=north,in_wall=true,open=true": {
+                   uvlock: true,
+                   y: 180,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=south,in_wall=false,open=false": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=south,in_wall=false,open=true": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=south,in_wall=true,open=false": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=south,in_wall=true,open=true": {
+                   uvlock: true,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=west,in_wall=false,open=false": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=west,in_wall=false,open=true": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 },
+                 "facing=west,in_wall=true,open=false": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_gate_wall`
+                 },
+                 "facing=west,in_wall=true,open=true": {
+                   uvlock: true,
+                   y: 90,
+                   model: `${modName}:block/${finalBlock}_gate_wall_open`
+                 }
+               }
+            };
+            
+            const jsonContent = JSON.stringify(jsonProduct, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\blockstates\\${finalBlock}_gate.json`, jsonContent, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Gate - Stone blockstate file');
+            });
+        }
+        
         if (document.getElementById("block").checked === false &&
             document.getElementById("slab").checked === false &&
             document.getElementById("stairs").checked === false &&
             document.getElementById("wall").checked === false &&
+            document.getElementById("gate_wood").checked === false &&
+            document.getElementById("gate_stone").checked === false &&
             document.getElementById("pillar").checked === false) {
                 return document.getElementById("errorholder").innerHTML = "Error: No boxes were selected!";
         }
