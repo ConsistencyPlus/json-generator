@@ -346,31 +346,66 @@ document.getElementById("blockModelForm").onsubmit = form => {
         // Wall Creator
         if (document.getElementById("wall").checked === true) {
             brickSlice();
-
-            const jsonProduct1 = {
+            
+            let finalProduct1 = {};
+            let finalProduct2 = {};
+            let finalProduct3 = {};    
+            
+         if (document.getElementById("all").checked === true) { 
+            const finalProduct1 = {
                 parent: `minecraft:block/template_wall_post`,
                 textures: {
                     wall: `${textureNamespace}:block/${blockName}`
                 }
             };
 
-            const jsonProduct2 = {
+            const finalProduct2 = {
                 parent: `minecraft:block/template_wall_side`,
                 textures: {
                     wall: `${textureNamespace}:block/${blockName}`
                 }
             };
 
-            const jsonProduct3 = {
+            const finalProduct3 = {
                 parent: `minecraft:block/template_wall_side_tall`,
                 textures: {
                     wall: `${textureNamespace}:block/${blockName}`
                 }
-            };
+            };     
+         }
             
-            const jsonContent1 = JSON.stringify(jsonProduct1, null, 4);
-            const jsonContent2 = JSON.stringify(jsonProduct2, null, 4);
-            const jsonContent3 = JSON.stringify(jsonProduct3, null, 4);
+            if (document.getElementById("threeMain").checked === true || document.getElementById("directional").checked === true) {
+                 const finalProduct1 = {
+                parent: `consistency_plus:block/consistency_template_wall_post_tri`,
+                textures: {
+                    wall: `${textureNamespace}:block/${sideTexture}`,
+                    wall_top: `${textureNamespace}:block/${topTexture}`,
+                    wall_bottom: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+            const finalProduct2 = {
+                parent: `consistency_plus:block/consistency_template_wall_side_tri`,
+                textures: {
+                    wall: `${textureNamespace}:block/${sideTexture}`,
+                    wall_top: `${textureNamespace}:block/${topTexture}`,
+                    wall_bottom: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+            const finalProduct3 = {
+                parent: `consistency_plus:block/consistency_template_wall_side_tall_tri`,
+                textures: {
+                    wall: `${textureNamespace}:block/${sideTexture}`,
+                    wall_top: `${textureNamespace}:block/${topTexture}`,
+                    wall_bottom: `${textureNamespace}:block/${blockName}`                
+                }
+            };     
+         }
+            
+            const jsonContent1 = JSON.stringify(finalProduct1, null, 4);
+            const jsonContent2 = JSON.stringify(finalProduct2, null, 4);
+            const jsonContent3 = JSON.stringify(finalProduct3, null, 4);
 
             fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_wall_post.json`, jsonContent1, 'utf8', (err) => {
                 if (err) throw err;
@@ -423,9 +458,105 @@ document.getElementById("blockModelForm").onsubmit = form => {
 
         }
 
+        // Wooden Gate Creator
+        
+        if (document.getElementById("gate_wood").checked === true) {
+            brickSlice();
+            
+            const jsonProduct1 = {
+                parent: "minecraft:block/template_fence_gate",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+            const jsonProduct2 = {
+                parent: "minecraft:block/template_fence_gate_open",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+           const jsonProduct3 = {
+                parent: "minecraft:block/template_fence_gate_wall",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+            const jsonProduct4 = {
+                parent: "minecraft:block/template_fence_gate_wall_open",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+            
+            const jsonContent1 = JSON.stringify(jsonProduct1, null, 4);
+            const jsonContent2 = JSON.stringify(jsonProduct2, null, 4);
+            const jsonContent3 = JSON.stringify(jsonProduct3, null, 4);
+            const jsonContent4 = JSON.stringify(jsonProduct4, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_fence_gate.json`, jsonContent1, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Gate - Wood file');
+            });
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_fence_gate_open.json`, jsonContent2, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Open Gate - Wood file.');
+            });
+            
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_fence_gate_wall.json`, jsonContent3, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Wall Gate - Wood file');
+            });
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_fence_gate_wall_open.json`, jsonContent2, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Open Wall Gate - Wood file.');
+            });
+
+        }
+        
+        // Stone gate creator        
+        
+        if (document.getElementById("gate_stone").checked === true) {
+            brickSlice();
+
+           const jsonProduct1 = {
+                parent: "consistency_plus:block/template_consistency_gate_wall",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+
+            const jsonProduct2 = {
+                parent: "consistency_plus:block/template_consistency_gate_wall_open",
+                textures: {
+                    texture: `${textureNamespace}:block/${blockName}`
+                }
+            };
+            
+            const jsonContent1 = JSON.stringify(jsonProduct1, null, 4);
+            const jsonContent2 = JSON.stringify(jsonProduct2, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_gate.json`, jsonContent1, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Gate - Stone file');
+            });
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}_gate_open.json`, jsonContent2, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made Open Gate - Stone file.');
+            });
+
+        }
+        
         if (document.getElementById("block").checked === false &&
             document.getElementById("slab").checked === false &&
             document.getElementById("stairs").checked === false &&
+            document.getElementById("gate_wood").checked === false &&
+            document.getElementById("gate_stone").checked === false &&
             document.getElementById("wall").checked === false &&
             document.getElementById("pillar").checked === false) {
                 return document.getElementById("errorholder").innerHTML = "Error: No boxes were selected!";
