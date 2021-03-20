@@ -23,6 +23,9 @@ document.getElementById("itemModelForm").onsubmit = form => {
     localStorage.checkSlab = document.getElementById("slab").checked;
     localStorage.checkStairs = document.getElementById("stairs").checked;
     localStorage.checkWall = document.getElementById("wall").checked;
+    localStorage.checkGateWood = document.getElementById("gate_wood").checked;
+    localStorage.checkGateStone = document.getElementById("gate_stone").checked;
+    localStorage.checkWallTri = document.getElementById("wall_tri").checked;
     localStorage.checkPillar = document.getElementById("pillar").checked;
     
     if (document.getElementById("saveLocation").value === 'No Location') {
@@ -130,11 +133,60 @@ document.getElementById("itemModelForm").onsubmit = form => {
                 console.log('Made the wall file');
             });
         }
+        
+                // Wall - Tri Creator
+        if (document.getElementById("wall_tri").checked === true) {
+            brickSlice();
+            
+            const jsonProduct = {
+                parent: `consistency_plus:block/template_consistency_wall_inventory_tri`,
+                textures: { 
+                    wall: `${itemNamespace}:block/${blockName}`,
+                    wall_top: `${itemNamespace}:block/${blockName}`,
+                    wall_bottom: `${itemNamespace}:block/${blockName}_bottom`,
+                }
+            };
+            
+            const jsonContent = JSON.stringify(jsonProduct, null, 4);
 
+            fs.writeFileSync(`${filepath}\\assets\\${modName}\\models\\item\\${finalBlock}_wall.json`, jsonContent, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made the wall tri file');
+            });
+        }
+
+        if (document.getElementById("gate_wood").checked === true) {
+            const jsonProduct = {
+                parent: `${modName}:block/${blockName}`
+            };
+            
+            const jsonContent = JSON.stringify(jsonProduct, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\item\\${finalBlock}_fence_gate.json`, jsonContent, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made the Gate - Wood file');
+            });
+        }
+        
+        if (document.getElementById("gate_stone").checked === true) {
+            const jsonProduct = {
+                parent: `${modName}:block/${blockName}`
+            };
+            
+            const jsonContent = JSON.stringify(jsonProduct, null, 4);
+
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\item\\${finalBlock}_gate.json`, jsonContent, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Made the Gate - Stone file');
+            });
+        }
         if (document.getElementById("block").checked === false &&
             document.getElementById("slab").checked === false &&
             document.getElementById("stairs").checked === false &&
             document.getElementById("wall").checked === false &&
+            document.getElementById("gate_wood").checked === false &&
+            document.getElementById("gate_stone").checked === false &&
+            document.getElementById("wall_tri").checked === false &&
             document.getElementById("pillar").checked === false) {
                 return document.getElementById("errorholder").innerHTML = "Error: No boxes were selected!";
         }
