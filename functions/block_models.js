@@ -54,15 +54,22 @@ document.getElementById("blockModelForm").onsubmit = form => {
     const filepath = localStorage.path;
 
     var textureNamespace;
+    var blockID;
     var blockName = document.getElementById("blockName").value;
     var modName = document.getElementById("modName").value;
 
-    if (document.getElementById("namespace").value === ``) {
+    if (document.getElementById("blockID").value === ``) {
+        blockID = document.getElementById("blockName").value;
+    } else {
+        blockID = document.getElementById("blockID").value;
+    }
+
+     if (document.getElementById("namespace").value === ``) {
         textureNamespace = document.getElementById("modName").value;
     } else {
         textureNamespace = document.getElementById("namespace").value;
     }
-
+    
     localStorage.modName = modName;
     localStorage.blockName = blockName;
     localStorage.namespace = textureNamespace;
@@ -101,14 +108,14 @@ document.getElementById("blockModelForm").onsubmit = form => {
     westTexture = westTexture.toLowerCase().trim().split(/ +/).join('_');
     southTexture = southTexture.toLowerCase().trim().split(/ +/).join('_');
 
-    let finalBlock = blockName;
+    let finalBlock = blockID;
 
     function brickSlice () {
-        const blockLength = blockName.length - 6;
-        const blockSubStr = blockName.substring(blockLength);
+        const blockLength = blockID.length - 6;
+        const blockSubStr = blockID.substring(blockLength);
   
         if (blockSubStr === 'bricks') {
-            finalBlock = blockName.substring(0, blockName.length - 1);
+            finalBlock = blockID.substring(0, blockID.length - 1);
         }
     }
 
@@ -173,7 +180,7 @@ document.getElementById("blockModelForm").onsubmit = form => {
             
             const jsonContent = JSON.stringify(finalProduct, null, 4);
 
-            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${finalBlock}.json`, jsonContent, 'utf8', (err) => {
+            fs.writeFile(`${filepath}\\assets\\${modName}\\models\\block\\${blockID}.json`, jsonContent, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Made block file');
             });
@@ -358,21 +365,21 @@ document.getElementById("blockModelForm").onsubmit = form => {
             const finalProduct1 = {
                 parent: `minecraft:block/template_wall_post`,
                 textures: {
-                    wall: `${textureNamespace}:block/${blockName}`
+                    wall: `${textureNamespace}:block/${blockID}`
                 }
             };
 
             const finalProduct2 = {
                 parent: `minecraft:block/template_wall_side`,
                 textures: {
-                    wall: `${textureNamespace}:block/${blockName}`
+                    wall: `${textureNamespace}:block/${blockID}`
                 }
             };
 
             const finalProduct3 = {
                 parent: `minecraft:block/template_wall_side_tall`,
                 textures: {
-                    wall: `${textureNamespace}:block/${blockName}`
+                    wall: `${textureNamespace}:block/${blockID}`
                 }
             };     
          }
