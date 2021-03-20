@@ -62,6 +62,18 @@ function onLoad() {
             document.getElementById("pillar").checked = true;
         }
 
+        if (localStorage.checkGateWood === "true" && document.getElementById("gate_wood")) {
+            document.getElementById("gate_wood").checked = true;
+        }
+
+        if (localStorage.checkGateStone === "true" && document.getElementById("gate_stone")) {
+            document.getElementById("gate_stone").checked = true;
+        }
+
+        if (localStorage.checkWallTri=== "true" && document.getElementById("wall_tri")) {
+            document.getElementById("wall_tri").checked = true;
+        }
+        
         // Other Boxes
         if (localStorage.triggerName && document.getElementById("triggerName")) {
             document.getElementById("triggerName").value = localStorage.triggerName;
