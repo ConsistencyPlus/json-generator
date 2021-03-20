@@ -40,11 +40,11 @@
 
             <div>
                 <input type="radio" id="all" name="texture" onclick="allTextures()">
-                <label for="all" class="textbold">Same texture on every side (Blocks, Stairs, Slabs, Walls, Pillars)</label><br>
+                <label for="all" class="textbold">Same texture on every side (Blocks, Stairs, Slabs, Walls, Gates, and Pillars)</label><br>
                 <input type="radio" id="threeMain" name="texture" onclick="threeDirections()">
-                <label for="threeMain" class="textbold">Different texture on top, bottom, and sides (Block, Stairs, Slabs)</label><br>
+                <label for="threeMain" class="textbold">Different texture on top, bottom, and sides (Block, Stairs, Slabs, and Walls)</label><br>
                 <input type="radio" id="directional" name="texture" onclick="directionalTextures()">
-                <label for="directional" class="textbold">Different texture on every side (Blocks, Slabs)</label><br>
+                <label for="directional" class="textbold">Different texture on every side (Blocks, and Slabs)</label><br>
                 <input type="radio" id="diffFront" name="texture" onclick="frontDiff()">
                 <label for="diffFront" class="textbold">Different front texture (Blocks)</label><br>
             </div>
@@ -55,7 +55,8 @@
                 The top slab uses west for the top, south for the bottom, and east for the side.
                 </p>
             <p class="textbold">
-                Pillars and walls will likely not be recieving the multi-texture support, unless a way to do so is discovered.<br>
+                Pillars will likely not be recieving the multi-texture support, unless a way to do so is discovered.<br>
+		Walls have partial multi-texture support within Consistency+. However it will not be the same as vanilla.<br>
                 Input the name of the block you want to make, as you might see it in the inventory, i.e. Birch Logs. Capitals are not necessary.
             </p>
 
@@ -101,6 +102,10 @@
             <label for="wall" class="textbold">Walls</label><br>
             <input type="checkbox" id="pillar">
             <label for="pillar" class="textbold">Pillars</label>
+	    <input type="checkbox" id="gate_stone">
+            <label for="gate_stone" class="textbold">Gate - Stones</label>
+	    <input type="checkbox" id="gate_wood">
+            <label for="gate_wood" class="textbold">Gate - Woods</label>
         </div>
         
         <div name="bottomButtons">
