@@ -157,7 +157,7 @@ document.getElementById("itemModelForm").onsubmit = form => {
 
         if (document.getElementById("gate_wood").checked === true) {
             const jsonProduct = {
-                parent: `${modName}:block/${blockName}`
+                parent: `${modName}:block/${blockName}_fence_gate`
             };
             
             const jsonContent = JSON.stringify(jsonProduct, null, 4);
@@ -170,7 +170,7 @@ document.getElementById("itemModelForm").onsubmit = form => {
         
         if (document.getElementById("gate_stone").checked === true) {
             const jsonProduct = {
-                parent: `${modName}:block/${blockName}`
+                parent: `${modName}:block/${blockName}_gate`
             };
             
             const jsonContent = JSON.stringify(jsonProduct, null, 4);
