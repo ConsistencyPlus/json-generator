@@ -156,6 +156,8 @@ document.getElementById("itemModelForm").onsubmit = form => {
         }
 
         if (document.getElementById("gate_wood").checked === true) {
+            brickSlice();
+
             const jsonProduct = {
                 parent: `${modName}:block/${blockName}_fence_gate`
             };
@@ -169,6 +171,8 @@ document.getElementById("itemModelForm").onsubmit = form => {
         }
         
         if (document.getElementById("gate_stone").checked === true) {
+            brickSlice();
+
             const jsonProduct = {
                 parent: `${modName}:block/${blockName}_gate`
             };
