@@ -25,7 +25,6 @@ document.getElementById("blockstateForm").onsubmit = form => {
     localStorage.checkWall = document.getElementById("wall").checked;
     localStorage.checkGateWood = document.getElementById("gate_wood").checked;
     localStorage.checkGateStone = document.getElementById("gate_stone").checked;
-    localStorage.checkWallTri = document.getElementById("wall_tri").checked;
     localStorage.checkPillar = document.getElementById("pillar").checked;
     
     if (document.getElementById("saveLocation").value === 'No Location') {
